@@ -8,9 +8,17 @@
 import UIKit
 import CoreData
 
-class PlusViewController: UIViewController {
+class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     let dataManager = DataManager.shared
+    
+    lazy var fetchedResultsController: NSFetchedResultsController<Plus> = {
+
+        let _controller: NSFetchedResultsController<Plus> = dataManager.getFetchedResultController(with: ["date"])
+        _controller.delegate = self
+        return _controller
+    }()
+
     
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var japaneseTextField: UITextField!
@@ -30,6 +38,18 @@ class PlusViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        do {
+
+            try fetchedResultsController.performFetch()
+        } catch {
+
+            print(error)
+        }
+    }
+    
     @IBAction func save() {
         let plus: Plus = dataManager.create()
         plus.date = Date()
@@ -41,7 +61,20 @@ class PlusViewController: UIViewController {
         plus.ranking = Int64(rankingTextField.text ?? "0")!
         plus.name = String(nameTextField.text ?? "")
         dataManager.saveContext()
+        print(plus.date)
+        print(plus.japanese)
+        print(plus.math)
+        print(plus.english)
+        print(plus.science)
+        print(plus.social_studies)
+        print(plus.ranking)
+        print(plus.name)
     }
+    
+    @IBAction func read() {
+        print(fetchedResultsController.object(at: IndexPath(row: 1, section: 0)))
+    }
+    
     
     
     
