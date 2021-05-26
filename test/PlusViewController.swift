@@ -18,7 +18,7 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate {
         _controller.delegate = self
         return _controller
     }()
-
+    
     
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var japaneseTextField: UITextField!
@@ -28,7 +28,6 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate {
     @IBOutlet var socialStudiesTextField: UITextField!
     @IBOutlet var rankingTextField: UITextField!
 
-    
     
     // *** let plus: Plus = dataManager.create() ***
     
@@ -52,6 +51,7 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     @IBAction func save() {
         let plus: Plus = dataManager.create()
+        
         plus.date = Date()
         plus.japanese = Float(japaneseTextField.text ?? "0.0")!
         plus.math = Float(mathTextField.text ?? "0.0")!
@@ -60,7 +60,14 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate {
         plus.social_studies = Float(socialStudiesTextField.text ?? "0.0")!
         plus.ranking = Int64(rankingTextField.text ?? "0")!
         plus.name = String(nameTextField.text ?? "")
+        
         dataManager.saveContext()
+    
+    }
+    
+    @IBAction func read() {
+        let plus = fetchedResultsController.object(at: IndexPath(row: 1, section: 0))
+        print(fetchedResultsController.object(at: IndexPath(row: 1, section: 0)))
         print(plus.date)
         print(plus.japanese)
         print(plus.math)
@@ -71,8 +78,5 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate {
         print(plus.name)
     }
     
-    @IBAction func read() {
-        print(fetchedResultsController.object(at: IndexPath(row: 1, section: 0)))
-    }    
 }
 
