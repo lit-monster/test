@@ -18,8 +18,7 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate {
         _controller.delegate = self
         return _controller
     }()
-    
-    
+
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var japaneseTextField: UITextField!
     @IBOutlet var mathTextField: UITextField!
@@ -62,7 +61,6 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate {
         plus.name = String(nameTextField.text ?? "")
         
         dataManager.saveContext()
-    
     }
     
     @IBAction func read() {
