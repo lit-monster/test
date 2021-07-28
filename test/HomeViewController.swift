@@ -12,10 +12,11 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate {
 
     let dataManager = DataManager.shared
     
-    @IBOutlet var tableView :UITableView! {
+    @IBOutlet var  collectionView :UICollectionView! {
         didSet {
-            tableView.delegate = self
-            tableView.dataSource = self
+            collectionView.delegate = self
+            collectionView.dataSource = self
+            collectionView.register(UINib(nibName: "ResultCell", bundle: nil), forCellWithReuseIdentifier: "ResultCell")
         }
     }
     
@@ -36,26 +37,26 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate {
         super.viewWillAppear(animated)
 
         do {
-
             try fetchedResultsController.performFetch()
         } catch {
-
             print(error)
         }
     }
 }
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let sections = fetchedResultsController.sections else { return 0 }
 
         let sectionInfo = sections[section]
         return sectionInfo.numberOfObjects // これ
         
-//        return 3
+    return 3
+    
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let plus = fetchedResultsController.object(at: indexPath)
         print(fetchedResultsController.object(at: indexPath))
         print(plus.date)
@@ -67,15 +68,22 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         print(plus.ranking)
         print(plus.name)
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        cell?.textLabel?.text = String(plus.japanese)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultCell", for: indexPath) as? ResultCell
+        
+        cell?.japaneseLabel.text = String(plus.japanese)
+        cell?.englishLabel.text = String(plus.english)
+        cell?.mathLabel.text = String(plus.math)
+        cell?.scienceLabel.text = String(plus.science)
+        cell?.social_studiesLabel.text = String(plus.social_studies)
+        cell?.dateLabel.text = DateUtils.stringFromDate(date: plus.date!, format: "yyyy/MM/dd")
+        cell?.rankingLabel.text = String(plus.ranking)
+        cell?.nameLabel.text = plus.name
+        
 //        DateUtils.stringFromDate(date: plus.date!, format: "yyyy/MM/dd")
         return cell!
     }
     
     
-}
-
 class DateUtils {
     class func stringFromDate(date: Date, format: String) -> String {
         let formatter: DateFormatter = DateFormatter()
@@ -83,4 +91,5 @@ class DateUtils {
         formatter.dateFormat = format
         return formatter.string(from: date)
     }
+}
 }

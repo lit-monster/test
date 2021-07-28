@@ -62,19 +62,5 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate {
         
         dataManager.saveContext()
     }
-    
-    @IBAction func read() {
-        let plus = fetchedResultsController.object(at: IndexPath(row: 1, section: 0))
-        print(fetchedResultsController.object(at: IndexPath(row: 1, section: 0)))
-        print(plus.date)
-        print(plus.japanese)
-        print(plus.math)
-        print(plus.english)
-        print(plus.science)
-        print(plus.social_studies)
-        print(plus.ranking)
-        print(plus.name)
-    }
-    
 }
 
