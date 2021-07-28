@@ -18,5 +18,4 @@ class ResultCell: UICollectionViewCell {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var rankingLabel: UILabel!
     
-    
 }
