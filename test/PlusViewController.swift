@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate {
+class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate, UITextFieldDelegate {
     
     let dataManager = DataManager.shared
     
@@ -32,8 +32,19 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.rankingTextField.delegate = self
         // Do any additional setup after loading the view.
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if (self.rankingTextField.isFirstResponder) {
+            self.rankingTextField.resignFirstResponder()
+        }
+    }
+    
+    func textFieldShouldReturn(rankingTextField: UITextField) -> Bool {
+        rankingTextField.resignFirstResponder()
+        return true
     }
     
     override func viewWillAppear(_ animated: Bool) {
