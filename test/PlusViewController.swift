@@ -61,17 +61,40 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     
     @IBAction func save() {
         let plus: Plus = dataManager.create()
+        let alert: UIAlertController = UIAlertController(title: "保存しますか？", message: "" , preferredStyle: .alert)
         
-        plus.date = Date()
-        plus.japanese = Float(japaneseTextField.text ?? "0.0")!
-        plus.math = Float(mathTextField.text ?? "0.0")!
-        plus.english = Float(englishTextField.text ?? "0.0")!
-        plus.science = Float(scienceTextField.text ?? "0.0")!
-        plus.social_studies = Float(socialStudiesTextField.text ?? "0.0")!
-        plus.ranking = Int64(rankingTextField.text ?? "0")!
-        plus.name = String(nameTextField.text ?? "")
+        alert.addAction(
+            UIAlertAction(
+                title: "保存", style: .default, handler: { [self] action in
+                    plus.date = Date()
+                    plus.japanese = Float(japaneseTextField.text ?? "0.0")!
+                    plus.math = Float(mathTextField.text ?? "0.0")!
+                    plus.english = Float(englishTextField.text ?? "0.0")!
+                    plus.science = Float(scienceTextField.text ?? "0.0")!
+                    plus.social_studies = Float(socialStudiesTextField.text ?? "0.0")!
+                    plus.ranking = Int64(rankingTextField.text ?? "0")!
+                    plus.name = String(nameTextField.text ?? "")
+                    print("保存されました。")
+                    japaneseTextField.text = ""
+                    mathTextField.text = ""
+                    englishTextField.text = ""
+                    scienceTextField.text = ""
+                    socialStudiesTextField.text = ""
+                    rankingTextField.text = ""
+                    nameTextField.text = ""
+                    dataManager.saveContext()
+                }
+            )
+        )
         
-        dataManager.saveContext()
+        alert.addAction(
+            UIAlertAction(
+                title: "キャンセル", style: .cancel, handler: { action in
+                print("キャンセル")
+                }
+            )
+        )
+        present(alert, animated: true, completion: nil)
     }
 }
 
