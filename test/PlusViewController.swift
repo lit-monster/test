@@ -61,28 +61,29 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     
     @IBAction func save() {
         let plus: Plus = dataManager.create()
-        let alert: UIAlertController = UIAlertController(title: "保存しますか？", message: "" , preferredStyle: .alert)
+        let alert: UIAlertController = UIAlertController(title: "保存しますか？", message: "あとから削除はできません。" , preferredStyle: .alert)
         
         alert.addAction(
             UIAlertAction(
-                title: "保存", style: .default, handler: { [self] action in
+                title: "保存", style: .default, handler: { [weak self] action in
+                    guard let self = self else { return }
                     plus.date = Date()
-                    plus.japanese = Float(japaneseTextField.text ?? "0.0")!
-                    plus.math = Float(mathTextField.text ?? "0.0")!
-                    plus.english = Float(englishTextField.text ?? "0.0")!
-                    plus.science = Float(scienceTextField.text ?? "0.0")!
-                    plus.social_studies = Float(socialStudiesTextField.text ?? "0.0")!
-                    plus.ranking = Int64(rankingTextField.text ?? "0")!
-                    plus.name = String(nameTextField.text ?? "")
+                    plus.japanese = Float(self.japaneseTextField.text ?? "0.0")!
+                    plus.math = Float(self.mathTextField.text ?? "0.0")!
+                    plus.english = Float(self.englishTextField.text ?? "0.0")!
+                    plus.science = Float(self.scienceTextField.text ?? "0.0")!
+                    plus.social_studies = Float(self.socialStudiesTextField.text ?? "0.0")!
+                    plus.ranking = Int64(self.rankingTextField.text ?? "0")!
+                    plus.name = String(self.nameTextField.text ?? "")
                     print("保存されました。")
-                    japaneseTextField.text = ""
-                    mathTextField.text = ""
-                    englishTextField.text = ""
-                    scienceTextField.text = ""
-                    socialStudiesTextField.text = ""
-                    rankingTextField.text = ""
-                    nameTextField.text = ""
-                    dataManager.saveContext()
+                    self.japaneseTextField.text = ""
+                    self.mathTextField.text = ""
+                    self.englishTextField.text = ""
+                    self.scienceTextField.text = ""
+                    self.socialStudiesTextField.text = ""
+                    self.rankingTextField.text = ""
+                    self.nameTextField.text = ""
+                    self.dataManager.saveContext()
                 }
             )
         )
@@ -97,4 +98,3 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         present(alert, animated: true, completion: nil)
     }
 }
-

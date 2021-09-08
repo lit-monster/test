@@ -33,6 +33,11 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        collectionView.reloadData()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -67,7 +72,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         print(plus.social_studies)
         print(plus.ranking)
         print(plus.name)
-        
+         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultCell", for: indexPath) as? ResultCell
         
         cell?.japaneseLabel.text = String(plus.japanese)
