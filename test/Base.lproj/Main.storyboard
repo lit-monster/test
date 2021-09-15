@@ -213,11 +213,10 @@
         <!--Tab Bar Controller-->
         <scene sceneID="YD4-BW-n6x">
             <objects>
-                <tabBarController id="Wx9-9R-ta9" sceneMemberID="viewController">
+                <tabBarController id="Wx9-9R-ta9" customClass="TabBarController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sIo-o5-Qrb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="OLd-MN-EMb" kind="relationship" relationship="viewControllers" id="FfL-vD-Prt"/>
