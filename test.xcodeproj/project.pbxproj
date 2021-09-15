@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0F400BC4269EE60F002B2B76 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F400BC2269EE60F002B2B76 /* ResultCell.swift */; };
 		0F400BC5269EE60F002B2B76 /* ResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F400BC3269EE60F002B2B76 /* ResultCell.xib */; };
-		0FA9AB5726F209DC009531DA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA9AB5626F209DC009531DA /* TabBarController.swift */; };
 		0FBEF39725B832DE005084C5 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBEF39625B832DE005084C5 /* Data.swift */; };
 		0FE44CE625AF022800267E8E /* Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0FE44CE425AF022800267E8E /* Data.xcdatamodeld */; };
 		0FF8052425A5C66700EE0F1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF8052325A5C66700EE0F1D /* AppDelegate.swift */; };
@@ -44,7 +43,6 @@
 /* Begin PBXFileReference section */
 		0F400BC2269EE60F002B2B76 /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 		0F400BC3269EE60F002B2B76 /* ResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCell.xib; sourceTree = "<group>"; };
-		0FA9AB5626F209DC009531DA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		0FBEF39625B832DE005084C5 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		0FE44CE525AF022800267E8E /* Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Data.xcdatamodel; sourceTree = "<group>"; };
 		0FF8052025A5C66700EE0F1D /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,7 +111,6 @@
 		0FF8052225A5C66700EE0F1D /* test */ = {
 			isa = PBXGroup;
 			children = (
-				0FA9AB5626F209DC009531DA /* TabBarController.swift */,
 				0FF8052325A5C66700EE0F1D /* AppDelegate.swift */,
 				0FF8052525A5C66700EE0F1D /* SceneDelegate.swift */,
 				0FF8052725A5C66700EE0F1D /* ViewController.swift */,
@@ -283,7 +280,6 @@
 				0FBEF39725B832DE005084C5 /* Data.swift in Sources */,
 				0FF8052825A5C66700EE0F1D /* ViewController.swift in Sources */,
 				0F400BC4269EE60F002B2B76 /* ResultCell.swift in Sources */,
-				0FA9AB5726F209DC009531DA /* TabBarController.swift in Sources */,
 				0FE44CE625AF022800267E8E /* Data.xcdatamodeld in Sources */,
 				0FF8055C25A5D36700EE0F1D /* PlusViewController.swift in Sources */,
 				0FF8052425A5C66700EE0F1D /* AppDelegate.swift in Sources */,
