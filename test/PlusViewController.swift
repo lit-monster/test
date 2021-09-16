@@ -68,11 +68,11 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate, 
                 title: "保存", style: .default, handler: { [weak self] action in
                     guard let self = self else { return }
                     plus.date = Date()
-                    plus.japanese = Float(self.japaneseTextField.text ?? "0.0")!
-                    plus.math = Float(self.mathTextField.text ?? "0.0")!
-                    plus.english = Float(self.englishTextField.text ?? "0.0")!
-                    plus.science = Float(self.scienceTextField.text ?? "0.0")!
-                    plus.social_studies = Float(self.socialStudiesTextField.text ?? "0.0")!
+                    plus.japanese = Int64(self.japaneseTextField.text ?? "0")!
+                    plus.math = Int64(self.mathTextField.text ?? "0")!
+                    plus.english = Int64(self.englishTextField.text ?? "0")!
+                    plus.science = Int64(self.scienceTextField.text ?? "0")!
+                    plus.social_studies = Int64(self.socialStudiesTextField.text ?? "0")!
                     plus.ranking = Int64(self.rankingTextField.text ?? "0")!
                     plus.name = String(self.nameTextField.text ?? "")
                     print("保存されました。")

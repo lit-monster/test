@@ -8,7 +8,7 @@
 import CoreData
 import UIKit
 
-class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate {
+class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate {
 
     let dataManager = DataManager.shared
     
@@ -47,6 +47,24 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate {
             print(error)
         }
     }
+    
+    let longPressGesture = UILongPressGestureRecognizer(
+           target: self,
+           action: #selector(HomeViewController.longPress(_:))
+    )
+    
+    longPressGesture.delegate = self
+    
+    self.view.addGestureRecognizer(longPressGesture)
+    
+    @objc func longPress(_ sender: UILongPressGestureRecognizer) {
+
+        if sender.state == .ended {
+            //ロングプレス終了時に実行したい処理を記載
+        }
+        
+    }
+
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -58,8 +76,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return sectionInfo.numberOfObjects // これ
         
     return 3
-    
     }
+
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let plus = fetchedResultsController.object(at: indexPath)
