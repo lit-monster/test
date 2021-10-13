@@ -61,7 +61,7 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     
     @IBAction func save() {
         let plus: Plus = dataManager.create()
-        let alert: UIAlertController = UIAlertController(title: "保存しますか？", message: "あとから削除はできません。" , preferredStyle: .alert)
+        let alert: UIAlertController = UIAlertController(title: "保存しますか？", message: "" , preferredStyle: .alert)
         
         alert.addAction(
             UIAlertAction(

@@ -31,13 +31,30 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        //ロングプレス用のインスタンスを生成する
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(HomeViewController.longPress(_:))
+        )
+        
+        //デリゲートをセット
+        longPressGesture.delegate = self
+        
+        //viewにロングプレスジェスチャーを追加
+        self.view.addGestureRecognizer(longPressGesture)
+    }
+    
+    //ロングプレス時に実行されるメソッド
+    @objc func longPress(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .ended {
+            //ロングプレス終了時に実行したい処理を記載する
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         collectionView.reloadData()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -48,24 +65,10 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         }
     }
     
-    let longPressGesture = UILongPressGestureRecognizer(
-           target: self,
-           action: #selector(HomeViewController.longPress(_:))
-    )
-    
-    longPressGesture.delegate = self
-    
-    self.view.addGestureRecognizer(longPressGesture)
-    
-    @objc func longPress(_ sender: UILongPressGestureRecognizer) {
-
-        if sender.state == .ended {
-            //ロングプレス終了時に実行したい処理を記載
-        }
+    func cellTap(_ collectionView: UICollectionView, detailView index: IndexPath){
+    }
         
     }
-
-}
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
