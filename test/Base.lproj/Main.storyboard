@@ -171,7 +171,7 @@
         <!--Home-->
         <scene sceneID="igX-Id-sXA">
             <objects>
-                <viewController id="OLd-MN-EMb" customClass="HomeViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="OLd-MN-EMb" customClass="HomeViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SPx-i9-hLZ">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,8 +195,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="428" height="798"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
+                                        <gestureRecognizers/>
                                         <size key="customSize" width="428" height="798"/>
                                         <connections>
+                                            <outletCollection property="gestureRecognizers" destination="5O6-tl-gYB" appends="YES" id="vQM-c1-P1p"/>
                                             <segue destination="Dj7-sy-3XM" kind="show" identifier="detailSegue" id="hhL-qv-qG4"/>
                                         </connections>
                                     </collectionViewCell>
@@ -207,6 +209,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="YYN-lQ-UBo"/>
+                    <navigationItem key="navigationItem" id="nIg-AJ-W0b"/>
                     <connections>
                         <outlet property="collectionView" destination="lT4-XT-Uu2" id="56c-0u-lEu"/>
                     </connections>
@@ -218,6 +221,11 @@
                         <outlet property="delegate" destination="lT4-XT-Uu2" id="BIq-Ia-mHc"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <tapGestureRecognizer id="5O6-tl-gYB">
+                    <connections>
+                        <action selector="cellTap" destination="OLd-MN-EMb" id="zU3-B1-K7o"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-65599.065420560742" y="-14958.531317494602"/>
         </scene>
@@ -320,9 +328,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ooO-gF-feQ">
+                                <rect key="frame" x="20" y="0.0" width="65" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system" title="戻る"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GvQ-5w-TtE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ooO-gF-feQ" firstAttribute="top" secondItem="GvQ-5w-TtE" secondAttribute="top" id="Ar9-Jh-bbC"/>
+                            <constraint firstItem="ooO-gF-feQ" firstAttribute="leading" secondItem="GvQ-5w-TtE" secondAttribute="leading" constant="20" id="Bqv-JT-XHz"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fav-1N-rEL"/>
                 </viewController>
@@ -337,7 +354,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sIo-o5-Qrb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.3604427576" green="0.56964612010000004" blue="0.78826421499999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.1620334614467567" green="0.64511550940706441" blue="0.91629637130583175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
@@ -356,6 +373,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="doc.badge.plus" catalog="system" width="119" height="128"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="plus" catalog="system" width="128" height="113"/>

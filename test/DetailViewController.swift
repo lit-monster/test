@@ -2,7 +2,7 @@
 //  DetailViewController.swift
 //  test
 //
-//  Created by Youmi Nagase on 2021/10/13.
+//  Created by Youmi Nagase on 2021/10/14.
 //
 
 import UIKit
@@ -14,4 +14,5 @@ class DetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
 }

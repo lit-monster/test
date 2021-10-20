@@ -35,12 +35,19 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         //ロングプレス用のインスタンスを生成する
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(HomeViewController.longPress(_:))
         )
-        
         //デリゲートをセット
         longPressGesture.delegate = self
-        
         //viewにロングプレスジェスチャーを追加
         self.view.addGestureRecognizer(longPressGesture)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.cellTap(_:))
+        )
+        tapGesture.delegate = self
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func cellTap(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "detailSegue", sender: nil)
     }
     
     //ロングプレス時に実行されるメソッド
@@ -63,9 +70,6 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         } catch {
             print(error)
         }
-    }
-    
-    func cellTap(_ collectionView: UICollectionView, detailView index: IndexPath){
     }
         
     }
