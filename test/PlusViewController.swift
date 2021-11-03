@@ -61,40 +61,52 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     
     @IBAction func save() {
         let plus: Plus = dataManager.create()
-        let alert: UIAlertController = UIAlertController(title: "保存しますか？", message: "" , preferredStyle: .alert)
-        
-        alert.addAction(
-            UIAlertAction(
-                title: "保存", style: .default, handler: { [weak self] action in
-                    guard let self = self else { return }
-                    plus.date = Date()
-                    plus.japanese = Int64(self.japaneseTextField.text ?? "0")!
-                    plus.math = Int64(self.mathTextField.text ?? "0")!
-                    plus.english = Int64(self.englishTextField.text ?? "0")!
-                    plus.science = Int64(self.scienceTextField.text ?? "0")!
-                    plus.social_studies = Int64(self.socialStudiesTextField.text ?? "0")!
-                    plus.ranking = Int64(self.rankingTextField.text ?? "0")!
-                    plus.name = String(self.nameTextField.text ?? "")
-                    print("保存されました。")
-                    self.japaneseTextField.text = ""
-                    self.mathTextField.text = ""
-                    self.englishTextField.text = ""
-                    self.scienceTextField.text = ""
-                    self.socialStudiesTextField.text = ""
-                    self.rankingTextField.text = ""
-                    self.nameTextField.text = ""
-                    self.dataManager.saveContext()
-                }
+        if nameTextField.text != "" && japaneseTextField.text != "" && mathTextField.text != "" && englishTextField.text != "" && scienceTextField.text != "" && socialStudiesTextField.text != "" && rankingTextField.text != "" {
+            //保存
+            let alert: UIAlertController = UIAlertController(title: "保存しますか？", message: "" , preferredStyle: .alert)
+            alert.addAction(
+                UIAlertAction(
+                    title: "保存", style: .default, handler: { [weak self] action in
+                        guard let self = self else { return }
+                        plus.date = Date()
+                        plus.japanese = Int64(self.japaneseTextField.text ?? "0")!
+                        plus.math = Int64(self.mathTextField.text ?? "0")!
+                        plus.english = Int64(self.englishTextField.text ?? "0")!
+                        plus.science = Int64(self.scienceTextField.text ?? "0")!
+                        plus.social_studies = Int64(self.socialStudiesTextField.text ?? "0")!
+                        plus.ranking = Int64(self.rankingTextField.text ?? "0")!
+                        plus.name = String(self.nameTextField.text ?? "")
+                        print("保存されました。")
+                        self.japaneseTextField.text = ""
+                        self.mathTextField.text = ""
+                        self.englishTextField.text = ""
+                        self.scienceTextField.text = ""
+                        self.socialStudiesTextField.text = ""
+                        self.rankingTextField.text = ""
+                        self.nameTextField.text = ""
+                        self.dataManager.saveContext()
+                    }
+                )
             )
-        )
-        
-        alert.addAction(
-            UIAlertAction(
-                title: "キャンセル", style: .cancel, handler: { action in
-                print("キャンセル")
-                }
+            alert.addAction(
+                UIAlertAction(
+                    title: "キャンセル", style: .cancel, handler: { action in
+                    print("キャンセル")
+                    }
+                )
             )
-        )
-        present(alert, animated: true, completion: nil)
+            present(alert, animated: true, completion: nil)
+        }else {
+            let textFieldAlert: UIAlertController = UIAlertController(title: "保存できません。", message: "未入力の項目があります。", preferredStyle: .alert)
+
+                textFieldAlert.addAction(
+                    UIAlertAction(
+                        title: "OK", style: .default, handler: { action in
+                            print("nil")
+                        }
+                    )
+                )
+                present(textFieldAlert, animated: true, completion: nil)
+        }
     }
 }

@@ -32,7 +32,7 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionViewFlowLayout.estimatedItemSize = CGSize(width: collectionView.frame.height / 1, height: 64)
+        collectionViewFlowLayout.estimatedItemSize = CGSize(width: collectionView.frame.width, height: 64)
 
         // Do any additional setup after loading the view.
         
@@ -85,8 +85,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         let sectionInfo = sections[section]
         return sectionInfo.numberOfObjects // これ
-        
-    return 3
     }
 
     
