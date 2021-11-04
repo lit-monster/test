@@ -20,24 +20,23 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aF-Sf-EL6">
                         <rect key="frame" x="30.000000000000004" y="36" width="37.333333333333343" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2年前期中間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5e-HS-Vbh">
                         <rect key="frame" x="29.999999999999993" y="10" width="114.33333333333331" height="24"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jRA-Ze-FEa">
                         <rect key="frame" x="251" y="23.999999999999996" width="12" height="16.666666666666661"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="jRA-Ze-FEa" secondAttribute="trailing" constant="30" id="3tA-9U-XsO"/>
+                <constraint firstAttribute="trailing" secondItem="jRA-Ze-FEa" secondAttribute="trailing" constant="30" id="5vH-gc-dme"/>
                 <constraint firstItem="l5e-HS-Vbh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="8ZE-WC-fKE"/>
                 <constraint firstItem="9aF-Sf-EL6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="Ywd-8k-BRQ"/>
                 <constraint firstItem="jRA-Ze-FEa" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="cO6-5R-Kii"/>
