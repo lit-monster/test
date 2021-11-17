@@ -204,6 +204,7 @@
                     <connections>
                         <outlet property="collectionView" destination="lT4-XT-Uu2" id="56c-0u-lEu"/>
                         <outlet property="collectionViewFlowLayout" destination="bmD-Yq-Fut" id="PWa-kY-wgG"/>
+                        <segue destination="Dj7-sy-3XM" kind="show" identifier="detailSegue" id="OXS-HS-nY9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E62-r6-FnR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -230,7 +231,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="77" translatesAutoresizingMaskIntoConstraints="NO" id="Pdo-SM-kBX">
-                                <rect key="frame" x="269" y="277" width="59" height="565"/>
+                                <rect key="frame" x="269" y="228" width="59" height="565"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fz-pq-u0S">
                                         <rect key="frame" x="0.0" y="0.0" width="59" height="30"/>
@@ -271,13 +272,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あああああああああ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRN-nO-dd9">
-                                <rect key="frame" x="20" y="135" width="388" height="48"/>
+                                <rect key="frame" x="20" y="86" width="388" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="77" translatesAutoresizingMaskIntoConstraints="NO" id="FKE-HA-FPU">
-                                <rect key="frame" x="100" y="277" width="50.666666666666657" height="565"/>
+                                <rect key="frame" x="100" y="228" width="50.666666666666657" height="565"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="国語" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHu-cS-VCT">
                                         <rect key="frame" x="0.0" y="0.0" width="50.666666666666664" height="30"/>
@@ -332,6 +333,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fav-1N-rEL"/>
+                    <connections>
+                        <outlet property="englishLabel" destination="vUE-Rl-AD4" id="EoS-C5-n2h"/>
+                        <outlet property="japaneseLabel" destination="0fz-pq-u0S" id="mFu-nv-sGM"/>
+                        <outlet property="mathLabel" destination="IKk-Kv-Bna" id="jzk-ro-A1R"/>
+                        <outlet property="rankingLabel" destination="hRH-R4-IDc" id="CvY-XZ-8tM"/>
+                        <outlet property="scienceLabel" destination="T2P-Cf-g0m" id="Uk4-DZ-vzw"/>
+                        <outlet property="socialStudyLabel" destination="Ka7-2k-zO7" id="wlh-Dk-7u4"/>
+                        <outlet property="titleLabel" destination="YRN-nO-dd9" id="8i9-ay-Jfz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZPk-Ru-O3P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

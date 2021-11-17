@@ -12,6 +12,8 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
 
     let dataManager = DataManager.shared
     
+    var selectedIndex = IndexPath()
+    
     @IBOutlet var  collectionView :UICollectionView! {
         didSet {
             collectionView.delegate = self
@@ -43,17 +45,20 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         longPressGesture.delegate = self
         //viewにロングプレスジェスチャーを追加
         self.view.addGestureRecognizer(longPressGesture)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.cellTap(_:))
-        )
-        tapGesture.delegate = self
-        self.view.addGestureRecognizer(tapGesture)
     }
     
-    @objc func cellTap(_ sender: UITapGestureRecognizer) {
-        performSegue(withIdentifier: "detailSegue", sender: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailSegue" {
+            let next = segue.destination as? DetailViewController
+            next?.inJapanese = self.selectedIndex.row
+            next?.inMath = self.selectedIndex.row
+            next?.inEnglish = self.selectedIndex.row
+            next?.inScience = self.selectedIndex.row
+            next?.inSocialStudy = self.selectedIndex.row
+            next?.inRanking = self.selectedIndex.row
+//            next?.inTitle = self.selectedIndex.row
+        }
     }
-    
     //ロングプレス時に実行されるメソッド
     @objc func longPress(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .ended {
@@ -106,6 +111,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
 //        DateUtils.stringFromDate(date: plus.date!, format: "yyyy/MM/dd")
         return cell!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedIndex = indexPath
+        performSegue(withIdentifier: "detailSegue", sender: nil)
     }
     
     
