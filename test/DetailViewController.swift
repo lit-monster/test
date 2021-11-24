@@ -17,24 +17,20 @@ class DetailViewController: UIViewController {
     @IBOutlet var rankingLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     
-    var inJapanese: Int = 0
-    var inMath: Int = 0
-    var inEnglish: Int = 0
-    var inScience: Int = 0
-    var inSocialStudy: Int = 0
-    var inRanking: Int = 0
-//    var inTitle: String = ""
-    
+    var plus: Plus?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        japaneseLabel.text = String(inJapanese)
-        mathLabel.text = String(inMath)
-        englishLabel.text = String(inEnglish)
-        scienceLabel.text = String(inScience)
-        socialStudyLabel.text = String(inSocialStudy)
-        rankingLabel.text = String(inRanking)
-//        titleLabel.text = inTitle
+        if let plus = plus {
+            japaneseLabel.text = String(plus.japanese)
+            mathLabel.text = String(plus.math)
+            englishLabel.text = String(plus.english)
+            scienceLabel.text = String(plus.science)
+            socialStudyLabel.text = String(plus.social_studies)
+            rankingLabel.text = String(plus.ranking)
+            titleLabel.text = plus.name
+        }
+
 
         // Do any additional setup after loading the view.
     }

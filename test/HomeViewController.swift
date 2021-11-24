@@ -50,13 +50,8 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailSegue" {
             let next = segue.destination as? DetailViewController
-            next?.inJapanese = self.selectedIndex.row
-            next?.inMath = self.selectedIndex.row
-            next?.inEnglish = self.selectedIndex.row
-            next?.inScience = self.selectedIndex.row
-            next?.inSocialStudy = self.selectedIndex.row
-            next?.inRanking = self.selectedIndex.row
-//            next?.inTitle = self.selectedIndex.row
+            let plus = fetchedResultsController.object(at: selectedIndex)
+            next?.plus = plus
         }
     }
     //ロングプレス時に実行されるメソッド
