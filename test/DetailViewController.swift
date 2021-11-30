@@ -17,17 +17,54 @@ class DetailViewController: UIViewController {
     @IBOutlet var rankingLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     
+    @IBOutlet var kokugoLabel: UILabel!
+    @IBOutlet var suugakuLabel: UILabel!
+    @IBOutlet var eigoLabel: UILabel!
+    @IBOutlet var rikaLabel: UILabel!
+    @IBOutlet var shakaiLabel: UILabel!
+    @IBOutlet var junniLabel: UILabel!
+    @IBOutlet var taitoruLabel: UILabel!
+    
     var plus: Plus?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        japaneseLabel.layer.cornerRadius = 16
+        japaneseLabel.layer.masksToBounds = true
+        mathLabel.layer.cornerRadius = 16
+        mathLabel.layer.masksToBounds = true
+        englishLabel.layer.cornerRadius = 16
+        englishLabel.layer.masksToBounds = true
+        scienceLabel.layer.cornerRadius = 16
+        scienceLabel.layer.masksToBounds = true
+        socialStudyLabel.layer.cornerRadius = 16
+        socialStudyLabel.layer.masksToBounds = true
+        rankingLabel.layer.cornerRadius = 16
+        rankingLabel.layer.masksToBounds = true
+        titleLabel.layer.cornerRadius = 16
+        titleLabel.layer.masksToBounds = true
+        
+        kokugoLabel.layer.cornerRadius = 16
+        kokugoLabel.layer.masksToBounds = true
+        suugakuLabel.layer.cornerRadius = 16
+        suugakuLabel.layer.masksToBounds = true
+        eigoLabel.layer.cornerRadius = 16
+        eigoLabel.layer.masksToBounds = true
+        rikaLabel.layer.cornerRadius = 16
+        rikaLabel.layer.masksToBounds = true
+        shakaiLabel.layer.cornerRadius = 16
+        shakaiLabel.layer.masksToBounds = true
+        junniLabel.layer.cornerRadius = 16
+        junniLabel.layer.masksToBounds = true
+        
         if let plus = plus {
-            japaneseLabel.text = String(plus.japanese)
-            mathLabel.text = String(plus.math)
-            englishLabel.text = String(plus.english)
-            scienceLabel.text = String(plus.science)
-            socialStudyLabel.text = String(plus.social_studies)
-            rankingLabel.text = String(plus.ranking)
+            japaneseLabel.text = String(plus.japanese) + "点"
+            mathLabel.text = String(plus.math) + "点"
+            englishLabel.text = String(plus.english) + "点"
+            scienceLabel.text = String(plus.science) + "点"
+            socialStudyLabel.text = String(plus.social_studies) + "点"
+            rankingLabel.text = String(plus.ranking) + "位"
             titleLabel.text = plus.name
         }
 
