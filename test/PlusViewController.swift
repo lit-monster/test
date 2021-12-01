@@ -26,6 +26,14 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     @IBOutlet var scienceTextField: UITextField!
     @IBOutlet var socialStudiesTextField: UITextField!
     @IBOutlet var rankingTextField: UITextField!
+    
+    @IBOutlet var taitoruLabel: UILabel!
+    @IBOutlet var kokugoLabel: UILabel!
+    @IBOutlet var suugakuLabel: UILabel!
+    @IBOutlet var eigoLabel: UILabel!
+    @IBOutlet var rikaLabel: UILabel!
+    @IBOutlet var shakaiLabel: UILabel!
+    @IBOutlet var junniLabel: UILabel!
 
     
     // *** let plus: Plus = dataManager.create() ***
@@ -34,6 +42,36 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         super.viewDidLoad()
         self.rankingTextField.delegate = self
         // Do any additional setup after loading the view.
+        nameTextField.layer.borderColor = UIColor.systemGray4.cgColor
+        nameTextField.layer.borderWidth = 1.0
+        japaneseTextField.layer.borderColor = UIColor.systemRed.cgColor
+        japaneseTextField.layer.borderWidth = 1.0
+        mathTextField.layer.borderColor = UIColor.systemTeal.cgColor
+        mathTextField.layer.borderWidth = 1.0
+        englishTextField.layer.borderColor = UIColor.systemPink.cgColor
+        englishTextField.layer.borderWidth = 1.0
+        scienceTextField.layer.borderColor = UIColor.systemGreen.cgColor
+        scienceTextField.layer.borderWidth = 1.0
+        socialStudiesTextField.layer.borderColor = UIColor.systemOrange.cgColor
+        socialStudiesTextField.layer.borderWidth = 1.0
+        rankingTextField.layer.borderColor = UIColor.systemPurple.cgColor
+        rankingTextField.layer.borderWidth = 1.0
+        
+        taitoruLabel.layer.cornerRadius = 16
+        kokugoLabel.layer.cornerRadius = 16
+        suugakuLabel.layer.cornerRadius = 16
+        eigoLabel.layer.cornerRadius = 16
+        rikaLabel.layer.cornerRadius = 16
+        shakaiLabel.layer.cornerRadius = 16
+        junniLabel.layer.cornerRadius = 16
+        taitoruLabel.layer.masksToBounds = true
+        kokugoLabel.layer.masksToBounds = true
+        suugakuLabel.layer.masksToBounds = true
+        eigoLabel.layer.masksToBounds = true
+        rikaLabel.layer.masksToBounds = true
+        shakaiLabel.layer.masksToBounds = true
+        junniLabel.layer.masksToBounds = true
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
