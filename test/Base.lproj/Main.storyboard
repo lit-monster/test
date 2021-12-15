@@ -98,7 +98,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqh-Wg-efL">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
-                                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                        <color key="backgroundColor" systemColor="systemGrayColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="mxi-s5-gTl"/>
                                             <constraint firstAttribute="width" constant="70" id="y8s-dI-16B"/>
@@ -212,18 +212,6 @@
         <!--test-->
         <scene sceneID="igX-Id-sXA">
             <objects>
-                <tapGestureRecognizer id="5O6-tl-gYB">
-                    <connections>
-                        <action selector="cellTap" destination="OLd-MN-EMb" id="zU3-B1-K7o"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="E62-r6-FnR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Tal-1f-86M">
-                    <connections>
-                        <action selector="longPress:" destination="OLd-MN-EMb" id="DTg-zc-SRm"/>
-                        <outlet property="delegate" destination="lT4-XT-Uu2" id="BIq-Ia-mHc"/>
-                    </connections>
-                </pongPressGestureRecognizer>
                 <viewController title="test" modalPresentationStyle="fullScreen" id="OLd-MN-EMb" customClass="HomeViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SPx-i9-hLZ">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
@@ -261,6 +249,18 @@
                         <segue destination="Dj7-sy-3XM" kind="show" identifier="detailSegue" id="OXS-HS-nY9"/>
                     </connections>
                 </viewController>
+                <tapGestureRecognizer id="5O6-tl-gYB">
+                    <connections>
+                        <action selector="cellTap" destination="OLd-MN-EMb" id="zU3-B1-K7o"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E62-r6-FnR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Tal-1f-86M">
+                    <connections>
+                        <action selector="longPress:" destination="OLd-MN-EMb" id="DTg-zc-SRm"/>
+                        <outlet property="delegate" destination="lT4-XT-Uu2" id="BIq-Ia-mHc"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-64699.065420560742" y="-14958.531317494602"/>
         </scene>
@@ -273,7 +273,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Wbw-R5-2oa">
-                                <rect key="frame" x="79.666666666666686" y="250" width="269" height="490"/>
+                                <rect key="frame" x="79.666666666666686" y="198" width="269" height="490"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="129" translatesAutoresizingMaskIntoConstraints="NO" id="kx0-8O-pRZ">
                                         <rect key="frame" x="0.0" y="0.0" width="269" height="40"/>
@@ -440,7 +440,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あああああああああ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRN-nO-dd9">
-                                <rect key="frame" x="20" y="172" width="388" height="48"/>
+                                <rect key="frame" x="20" y="110" width="388" height="48"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -452,8 +452,8 @@
                         <constraints>
                             <constraint firstItem="YRN-nO-dd9" firstAttribute="leading" secondItem="GvQ-5w-TtE" secondAttribute="leading" constant="20" id="1pl-5Q-TRG"/>
                             <constraint firstItem="Wbw-R5-2oa" firstAttribute="centerX" secondItem="VKl-6A-b36" secondAttribute="centerX" id="UU4-72-oZZ"/>
-                            <constraint firstItem="Wbw-R5-2oa" firstAttribute="top" secondItem="YRN-nO-dd9" secondAttribute="bottom" constant="30" id="prm-Nm-2ue"/>
-                            <constraint firstItem="YRN-nO-dd9" firstAttribute="top" secondItem="GvQ-5w-TtE" secondAttribute="top" constant="32" id="sHH-B1-Lv0"/>
+                            <constraint firstItem="YRN-nO-dd9" firstAttribute="top" secondItem="VKl-6A-b36" secondAttribute="top" constant="110" id="WuU-gd-WZg"/>
+                            <constraint firstItem="Wbw-R5-2oa" firstAttribute="top" secondItem="YRN-nO-dd9" secondAttribute="bottom" constant="40" id="mT1-Dt-O6L"/>
                             <constraint firstItem="GvQ-5w-TtE" firstAttribute="trailing" secondItem="YRN-nO-dd9" secondAttribute="trailing" constant="20" id="ylo-zh-b5g"/>
                         </constraints>
                     </view>
@@ -486,7 +486,9 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sIo-o5-Qrb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="selectedImageTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" systemColor="labelColor"/>
+                        <color key="barTintColor" systemColor="labelColor"/>
+                        <color key="selectedImageTintColor" systemColor="labelColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="fwQ-o5-b0P" kind="relationship" relationship="viewControllers" id="FfL-vD-Prt"/>
@@ -526,14 +528,17 @@
         <image name="doc.badge.plus" catalog="system" width="119" height="128"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -42,7 +42,7 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         super.viewDidLoad()
         self.rankingTextField.delegate = self
         // Do any additional setup after loading the view.
-        nameTextField.layer.borderColor = UIColor.systemGray4.cgColor
+        nameTextField.layer.borderColor = UIColor.systemGray.cgColor
         nameTextField.layer.borderWidth = 1.0
         japaneseTextField.layer.borderColor = UIColor.systemRed.cgColor
         japaneseTextField.layer.borderWidth = 1.0
