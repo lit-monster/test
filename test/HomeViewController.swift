@@ -38,13 +38,18 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
 
         // Do any additional setup after loading the view.
         
-        //ロングプレス用のインスタンスを生成する
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(HomeViewController.longPress(_:))
+        //スワイプ用のインスタンスを生成する
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(HomeViewController.swipe(_:))
         )
         //デリゲートをセット
-        longPressGesture.delegate = self
-        //viewにロングプレスジェスチャーを追加
-        self.view.addGestureRecognizer(longPressGesture)
+        swipeGesture.delegate = self
+        //viewにスワイプジェスチャーを追加
+        self.view.addGestureRecognizer(swipeGesture)
+        
+        let leftSwipe = UISwipeGestureRecognizer(
+            target: self, action: #selector(HomeViewController.swipe(_:)))
+        leftSwipe.direction = .left
+        self.view.addGestureRecognizer(leftSwipe)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -54,11 +59,8 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
             next?.plus = plus
         }
     }
-    //ロングプレス時に実行されるメソッド
-    @objc func longPress(_ sender: UILongPressGestureRecognizer) {
-        if sender.state == .ended {
-            //ロングプレス終了時に実行したい処理を記載する
-        }
+    //スワイプ時に実行されるメソッド
+    @objc func swipe(_ sender: UISwipeGestureRecognizer) {
     }
     
     override func viewDidAppear(_ animated: Bool) {
