@@ -98,31 +98,13 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     }
     
     @IBAction func save() {
-        let plus: Plus = dataManager.create()
         if nameTextField.text != "" && japaneseTextField.text != "" && mathTextField.text != "" && englishTextField.text != "" && scienceTextField.text != "" && socialStudiesTextField.text != "" && rankingTextField.text != "" {
             //保存
             let alert: UIAlertController = UIAlertController(title: "保存しますか？", message: "" , preferredStyle: .alert)
             alert.addAction(
-                UIAlertAction(
-                    title: "保存", style: .default, handler: { [weak self] action in
-                        guard let self = self else { return }
-                        plus.date = Date()
-                        plus.japanese = Int64(self.japaneseTextField.text ?? "0")!
-                        plus.math = Int64(self.mathTextField.text ?? "0")!
-                        plus.english = Int64(self.englishTextField.text ?? "0")!
-                        plus.science = Int64(self.scienceTextField.text ?? "0")!
-                        plus.social_studies = Int64(self.socialStudiesTextField.text ?? "0")!
-                        plus.ranking = Int64(self.rankingTextField.text ?? "0")!
-                        plus.name = String(self.nameTextField.text ?? "")
-                        print("保存されました。")
-                        self.japaneseTextField.text = ""
-                        self.mathTextField.text = ""
-                        self.englishTextField.text = ""
-                        self.scienceTextField.text = ""
-                        self.socialStudiesTextField.text = ""
-                        self.rankingTextField.text = ""
-                        self.nameTextField.text = ""
-                        self.dataManager.saveContext()
+                UIAlertAction(title: "保存", style: .default, handler: { [weak self] action in
+                    guard let self = self else { return }
+                    self.saveContext()
                     }
                 )
             )
@@ -146,5 +128,26 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate, 
                 )
                 present(textFieldAlert, animated: true, completion: nil)
         }
+    }
+    
+    private func saveContext() {
+        let plus: Plus = dataManager.create()
+        plus.date = Date()
+        plus.japanese = Int64(self.japaneseTextField.text ?? "0")!
+        plus.math = Int64(self.mathTextField.text ?? "0")!
+        plus.english = Int64(self.englishTextField.text ?? "0")!
+        plus.science = Int64(self.scienceTextField.text ?? "0")!
+        plus.social_studies = Int64(self.socialStudiesTextField.text ?? "0")!
+        plus.ranking = Int64(self.rankingTextField.text ?? "0")!
+        plus.name = String(self.nameTextField.text ?? "")
+        print("保存されました。")
+        self.japaneseTextField.text = ""
+        self.mathTextField.text = ""
+        self.englishTextField.text = ""
+        self.scienceTextField.text = ""
+        self.socialStudiesTextField.text = ""
+        self.rankingTextField.text = ""
+        self.nameTextField.text = ""
+        self.dataManager.saveContext()
     }
 }
