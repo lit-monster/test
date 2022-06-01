@@ -9,7 +9,7 @@ import CoreData
 import UIKit
 
 class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate {
-
+    
     let dataManager = DataManager.shared
     
     var selectedIndex = IndexPath()
@@ -25,17 +25,17 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     @IBOutlet var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
     lazy var fetchedResultsController: NSFetchedResultsController<Plus> = {
-
+        
         let _controller: NSFetchedResultsController<Plus> = dataManager.getFetchedResultController(with: ["date"])
         _controller.delegate = self
         return _controller
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionViewFlowLayout.estimatedItemSize = CGSize(width: self.view.frame.width, height: 64)
-
+        
         // Do any additional setup after loading the view.
         
         //スワイプ用のインスタンスを生成する
@@ -67,28 +67,28 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         super.viewDidAppear(animated)
         collectionView.reloadData()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         do {
             try fetchedResultsController.performFetch()
         } catch {
             print(error)
         }
     }
-        
-    }
+    
+}
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let sections = fetchedResultsController.sections else { return 0 }
-
+        
         let sectionInfo = sections[section]
         return sectionInfo.numberOfObjects // これ
     }
-
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let plus = fetchedResultsController.object(at: indexPath)
@@ -101,12 +101,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         print(plus.social_studies)
         print(plus.ranking)
         print(plus.name)
-         
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultCell", for: indexPath) as? ResultCell
         cell?.dateLabel.text = DateUtils.stringFromDate(date: plus.date!, format: "yyyy/MM/dd")
         cell?.nameLabel.text = plus.name
         
-//        DateUtils.stringFromDate(date: plus.date!, format: "yyyy/MM/dd")
+        //        DateUtils.stringFromDate(date: plus.date!, format: "yyyy/MM/dd")
         return cell!
     }
     
@@ -116,12 +116,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     
-class DateUtils {
-    class func stringFromDate(date: Date, format: String) -> String {
-        let formatter: DateFormatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .gregorian)
-        formatter.dateFormat = format
-        return formatter.string(from: date)
+    class DateUtils {
+        class func stringFromDate(date: Date, format: String) -> String {
+            let formatter: DateFormatter = DateFormatter()
+            formatter.calendar = Calendar(identifier: .gregorian)
+            formatter.dateFormat = format
+            return formatter.string(from: date)
+        }
     }
-}
 }
