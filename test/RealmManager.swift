@@ -15,28 +15,27 @@ final class RealmManager: NSObject {
         realm.objects(T.self)
     }
 
-    func getFilteredRecords<T: Object>(predicate: NSPredicate, type: T) -> Results<T> {
+    func getFilteredRecords<T: IdentifiableObject>(predicate: NSPredicate, type: T) -> Results<T> {
         let results = realm.objects(T.self)
         return results.filter(predicate)
     }
 
-    func createTestRecord<T: Object>(record: T) {
+    func createTestRecord<T: IdentifiableObject>(record: T) {
         try! realm.write {
             realm.add(record)
         }
     }
 
-    func updateRecord<T: Object>(id: UUID, newRecord: T) {
+    func updateRecord<T: IdentifiableObject>(id: String, newRecord: T) {
         let results = realm.objects(T.self)
-        guard var oldRecord = results.filter(NSPredicate(format: "id == %@", "\(id)")).first else {
-            return 
-        }
+        guard var oldRecord = results.filter(NSPredicate(format: "id == %@", "\(id)")).first else { return }
         try! realm.write {
             oldRecord = newRecord
+            oldRecord.id = id
         }
     }
 
-    func deleteRecord<T: Object>(record: T) {
+    func deleteRecord<T: IdentifiableObject>(record: T) {
         try! realm.write {
             realm.delete(record)
         }
