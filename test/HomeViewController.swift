@@ -22,12 +22,12 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBOutlet var collectionViewFlowLayout: UICollectionViewFlowLayout!
-
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionViewFlowLayout.estimatedItemSize = CGSize(width: self.view.frame.width, height: 64)
-
+        
         // Do any additional setup after loading the view.
         
         //スワイプ用のインスタンスを生成する
@@ -58,11 +58,10 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidAppear(animated)
         collectionView.reloadData()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-        
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -71,7 +70,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let result = realmManager.getAllRecords(type: Plus())
         return result.count
     }
-
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let result = realmManager.getAllRecords(type: Plus())
@@ -84,7 +83,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         print(plus.socialStudies)
         print(plus.ranking)
         print(plus.name)
-         
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultCell", for: indexPath) as? ResultCell
         cell?.recordId = plus.id
         cell?.dateLabel.text = DateUtils.stringFromDate(date: plus.date, format: "yyyy/MM/dd")

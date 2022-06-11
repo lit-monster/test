@@ -25,9 +25,8 @@ class PlusViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var rikaLabel: UILabel!
     @IBOutlet var shakaiLabel: UILabel!
     @IBOutlet var junniLabel: UILabel!
-
+  
     let realmManager = RealmManager()
-
     
     // *** let plus: Plus = dataManager.create() ***
     
@@ -65,26 +64,88 @@ class PlusViewController: UIViewController, UITextFieldDelegate {
         shakaiLabel.layer.masksToBounds = true
         junniLabel.layer.masksToBounds = true
         
+        saveButton.layer.cornerRadius = 10
+        saveButton.layer.borderColor = UIColor.systemYellow.cgColor
+        saveButton.layer.borderWidth = 2.0
+        saveButton.layer.shadowColor = UIColor.systemYellow.cgColor
+        
+        nameTextField.delegate = self
+        japaneseTextField.delegate = self
+        mathTextField.delegate = self
+        englishTextField.delegate = self
+        scienceTextField.delegate = self
+        socialStudiesTextField.delegate = self
+        rankingTextField.delegate = self
+        
+        nameTextField.tag = 0
+        japaneseTextField.tag = 1
+        mathTextField.tag = 2
+        englishTextField.tag = 3
+        scienceTextField.tag = 4
+        socialStudiesTextField.tag = 5
+        rankingTextField.tag = 6
+        
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        toolBar.sizeToFit()
+        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
+        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(commitButtonTapped))
+        toolBar.items = [spacer,commitButton]
+        nameTextField.inputAccessoryView = toolBar
+        japaneseTextField.inputAccessoryView = toolBar
+        mathTextField.inputAccessoryView = toolBar
+        englishTextField.inputAccessoryView = toolBar
+        scienceTextField.inputAccessoryView = toolBar
+        socialStudiesTextField.inputAccessoryView = toolBar
+        rankingTextField.inputAccessoryView = toolBar
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (self.rankingTextField.isFirstResponder) {
-            self.rankingTextField.resignFirstResponder()
-        }
+        self.view.endEditing(true)
     }
-    
-    func textFieldShouldReturn(rankingTextField: UITextField) -> Bool {
-        rankingTextField.resignFirstResponder()
-        return true
-    }
+//
+//    func textFieldShouldReturn(rankingTextField: UITextField) -> Bool {
+//        rankingTextField.resignFirstResponder()
+//        return true
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        let nextTag = textField.tag + 1
+        if let nextTextField = self.view.viewWithTag(nextTag)  {
+            nextTextField.becomeFirstResponder()
+        }
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+    }
+    
+    @objc func commitButtonTapped() {
+//        textField.resignFirstResponder()
+//                if textField == nameTextField {
+//                    japaneseTextField.becomeFirstResponder()
+//                }else if textField == japaneseTextField {
+//                    mathTextField.becomeFirstResponder()
+//                }else if textField == mathTextField {
+//                    englishTextField.becomeFirstResponder()
+//                }else if textField == englishTextField {
+//                    scienceTextField.becomeFirstResponder()
+//                }else if textField == scienceTextField {
+//                    socialStudiesTextField.becomeFirstResponder()
+//                }else if textField == socialStudiesTextField {
+//                    rankingTextField.becomeFirstResponder()
+//                }else {
+//                    return true
+//                }
+//                return true
+    }
+
     @IBAction func save() {
         if nameTextField.text != "" && japaneseTextField.text != "" && mathTextField.text != "" && englishTextField.text != "" && scienceTextField.text != "" && socialStudiesTextField.text != "" && rankingTextField.text != "" {
-            //保存
             let alert: UIAlertController = UIAlertController(title: "保存しますか？", message: "" , preferredStyle: .alert)
             alert.addAction(
                 UIAlertAction(title: "保存", style: .default, handler: { [weak self] action in
