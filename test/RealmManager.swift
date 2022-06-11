@@ -20,6 +20,10 @@ final class RealmManager: NSObject {
         return results.filter(predicate)
     }
 
+    func getRecord<T: IdentifiableObject>(id: String, type: T) -> T? {
+        self.getFilteredRecords(predicate: NSPredicate(format: "id == %@", "\(id)"), type: T()).first
+    }
+
     func createTestRecord<T: IdentifiableObject>(record: T) {
         try! realm.write {
             realm.add(record)
@@ -35,7 +39,8 @@ final class RealmManager: NSObject {
         }
     }
 
-    func deleteRecord<T: IdentifiableObject>(record: T) {
+    func deleteRecord<T: IdentifiableObject>(id: String, type: T) {
+        guard let record = self.getRecord(id: id, type: type) else { return }
         try! realm.write {
             realm.delete(record)
         }

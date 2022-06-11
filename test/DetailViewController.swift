@@ -70,4 +70,15 @@ class DetailViewController: UIViewController {
             titleLabel.text = plus.name
         }
     }
+
+    @IBAction func deleteButtonPressed() {
+        guard let selectedRecordId = selectedRecordId else { return }
+        realmManager.deleteRecord(id: selectedRecordId, type: Plus())
+    }
+
+    @IBAction func updateButtonPressed() {
+        guard let selectedRecordId = selectedRecordId else { return }
+        let updatedRecord = Plus()
+        realmManager.updateRecord(id: selectedRecordId, newRecord: updatedRecord)
+    }
 }
