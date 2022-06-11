@@ -15,7 +15,7 @@ final class RealmManager: NSObject {
         realm.objects(T.self)
     }
 
-    func getFilteredRecords<T: Object>(predicate: NSPredicate) -> Results<T> {
+    func getFilteredRecords<T: Object>(predicate: NSPredicate, type: T) -> Results<T> {
         let results = realm.objects(T.self)
         return results.filter(predicate)
     }

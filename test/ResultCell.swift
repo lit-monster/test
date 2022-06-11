@@ -11,5 +11,7 @@ class ResultCell: UICollectionViewCell {
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
+
+    var recordId: String?
     
 }

@@ -25,7 +25,7 @@ class DetailViewController: UIViewController {
     @IBOutlet var junniLabel: UILabel!
     @IBOutlet var taitoruLabel: UILabel!
     
-    var selectedIndex: IndexPath?
+    var selectedRecordId: String?
 
     var realmManager = RealmManager()
 
@@ -60,7 +60,7 @@ class DetailViewController: UIViewController {
         junniLabel.layer.cornerRadius = 16
         junniLabel.layer.masksToBounds = true
         
-        if let plus = realmManager.getFilteredRecords(predicate: NSPredicate(format: "id == %@", "\(String(describing: selectedIndex?.row))")).first as? Plus {
+        if let plus = realmManager.getFilteredRecords(predicate: NSPredicate(format: "id == %@", selectedRecordId!), type: Plus()).first as? Plus {
             japaneseLabel.text = String(plus.japanese) + "点"
             mathLabel.text = String(plus.math) + "点"
             englishLabel.text = String(plus.english) + "点"

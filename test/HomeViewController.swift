@@ -11,7 +11,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
 
     let realmManager = RealmManager()
     
-    var selectedIndex = IndexPath()
+    var selectedRecordID = String()
     
     @IBOutlet var  collectionView :UICollectionView! {
         didSet {
@@ -47,7 +47,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailSegue" {
             let next = segue.destination as? DetailViewController
-            next?.selectedIndex = self.selectedIndex
+            next?.selectedRecordId = self.selectedRecordID
         }
     }
     //スワイプ時に実行されるメソッド
@@ -86,13 +86,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         print(plus.name)
          
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultCell", for: indexPath) as? ResultCell
+        cell?.recordId = plus.id
         cell?.dateLabel.text = DateUtils.stringFromDate(date: plus.date, format: "yyyy/MM/dd")
         cell?.nameLabel.text = plus.name
         return cell!
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedIndex = indexPath
+        guard let selectedCell = collectionView.cellForItem(at: indexPath) as? ResultCell else { return }
+        selectedRecordID = selectedCell.recordId!
         performSegue(withIdentifier: "detailSegue", sender: nil)
     }
 }
