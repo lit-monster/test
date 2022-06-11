@@ -17,6 +17,8 @@ class PlusViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var scienceTextField: UITextField!
     @IBOutlet var socialStudiesTextField: UITextField!
     @IBOutlet var rankingTextField: UITextField!
+
+    @IBOutlet var saveButton: UIButton!
     
     @IBOutlet var taitoruLabel: UILabel!
     @IBOutlet var kokugoLabel: UILabel!

@@ -25,6 +25,7 @@
 		E777085B285306790058607D /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E777085A285306790058607D /* DateUtil.swift */; };
 		E777085D285306E20058607D /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E777085C285306E20058607D /* RealmManager.swift */; };
 		E777085F28544BC20058607D /* NSPredicate+Initializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E777085E28544BC20058607D /* NSPredicate+Initializers.swift */; };
+		E7B27C5A28546918007DED9D /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B27C5928546918007DED9D /* UserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		E777085A285306790058607D /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		E777085C285306E20058607D /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		E777085E28544BC20058607D /* NSPredicate+Initializers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+Initializers.swift"; sourceTree = "<group>"; };
+		E7B27C5928546918007DED9D /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				E7343E1D2851DB8300BC31FF /* ResultCell.xib */,
 				E7343E1A2851D3FA00BC31FF /* Plus.swift */,
 				0FF8052325A5C66700EE0F1D /* AppDelegate.swift */,
+				E7B27C5928546918007DED9D /* UserViewController.swift */,
 				0FF8052525A5C66700EE0F1D /* SceneDelegate.swift */,
 				0FF8052725A5C66700EE0F1D /* ViewController.swift */,
 				0F11BD4D271871C40096797E /* HomeViewController.swift */,
@@ -295,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F11BD50271872100096797E /* DetailViewController.swift in Sources */,
+				E7B27C5A28546918007DED9D /* UserViewController.swift in Sources */,
 				E7343E1B2851D3FA00BC31FF /* Plus.swift in Sources */,
 				E777085F28544BC20058607D /* NSPredicate+Initializers.swift in Sources */,
 				0FF8052825A5C66700EE0F1D /* ViewController.swift in Sources */,

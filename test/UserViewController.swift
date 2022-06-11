@@ -2,24 +2,16 @@
 //  UserViewController.swift
 //  test
 //
-//  Created by Youmi Nagase on 2022/05/04.
+//  Created by Masakaz Ozaki on 2022/06/11.
 //
 
 import UIKit
-import CoreData
 
 class UserViewController: UIViewController {
-    
-    @IBOutlet var japaneseAverageLabel: UILabel!
-    @IBOutlet var mathAverageLabel: UILabel!
-    @IBOutlet var englishAverageLabel: UILabel!
-    @IBOutlet var scienceAverageLabel: UILabel!
-    @IBOutlet var socialStudyAverageLabel: UILabel!
-    
-    var plus: Plus?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
     

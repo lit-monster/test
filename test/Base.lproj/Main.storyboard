@@ -14,11 +14,11 @@
             <objects>
                 <viewController id="mvW-rA-V1G" customClass="PlusViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zY4-WF-dpP">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="t7B-f6-r5p">
-                                <rect key="frame" x="243" y="123" width="100" height="400"/>
+                                <rect key="frame" x="243" y="96" width="100" height="400"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tv4-Xa-gRH">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
@@ -86,7 +86,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vVa-Yw-mOa">
-                                <rect key="frame" x="85" y="123" width="70" height="400"/>
+                                <rect key="frame" x="85" y="96" width="70" height="400"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqh-Wg-efL">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
@@ -168,7 +168,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cyc-dc-e5J">
-                                <rect key="frame" x="139" y="568" width="150" height="50"/>
+                                <rect key="frame" x="139" y="541" width="150" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5C6-9H-7pU"/>
                                     <constraint firstAttribute="width" constant="150" id="Iba-6U-dXe"/>
@@ -214,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VgQ-cq-qiB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-64670" y="-15714"/>
+            <point key="canvasLocation" x="-63537" y="-15406"/>
         </scene>
         <!--test-->
         <scene sceneID="igX-Id-sXA">
@@ -250,16 +250,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Test Records" largeTitleDisplayMode="always" id="nIg-AJ-W0b">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="siU-Zn-UT9">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="GGU-dE-QPE">
-                                <rect key="frame" x="313" y="5" width="95" height="34.333333333333336"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="plus.rectangle.on.folder" catalog="system"/>
-                                <connections>
-                                    <segue destination="mvW-rA-V1G" kind="show" id="bMJ-On-wcV"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus.square.dashed" catalog="system" id="hDh-M5-93y">
+                            <connections>
+                                <segue destination="mvW-rA-V1G" kind="presentation" id="VN8-3C-Ues"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -268,15 +262,10 @@
                         <segue destination="Dj7-sy-3XM" kind="show" identifier="detailSegue" id="OXS-HS-nY9"/>
                     </connections>
                 </viewController>
-                <tapGestureRecognizer id="5O6-tl-gYB">
-                    <connections>
-                        <action selector="cellTap" destination="OLd-MN-EMb" id="zU3-B1-K7o"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="5O6-tl-gYB"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E62-r6-FnR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Tal-1f-86M">
                     <connections>
-                        <action selector="longPress:" destination="OLd-MN-EMb" id="DTg-zc-SRm"/>
                         <outlet property="delegate" destination="lT4-XT-Uu2" id="BIq-Ia-mHc"/>
                     </connections>
                 </pongPressGestureRecognizer>
@@ -503,7 +492,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZPk-Ru-O3P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-63679" y="-14959"/>
+            <point key="canvasLocation" x="-63536" y="-14714"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="YD4-BW-n6x">
@@ -530,90 +519,11 @@
                     <view key="view" contentMode="scaleToFill" id="ZQR-YN-T8t">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="国語" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDM-GM-MgZ">
-                                <rect key="frame" x="136" y="391" width="35" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLq-2v-GVX">
-                                <rect key="frame" x="261" y="391" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="数学" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pn-mA-BoC">
-                                <rect key="frame" x="136" y="453" width="35" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0v-rx-iqZ">
-                                <rect key="frame" x="261" y="453" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="英語" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiM-Xq-5qT">
-                                <rect key="frame" x="136" y="531" width="35" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipV-4U-KFu">
-                                <rect key="frame" x="261" y="531" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="理科" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqy-a9-Qho">
-                                <rect key="frame" x="136" y="603" width="35" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIa-3I-qNv">
-                                <rect key="frame" x="261" y="603" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6b-Mv-yuL">
-                                <rect key="frame" x="261" y="675" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="社会" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35H-Po-xKE">
-                                <rect key="frame" x="136" y="675" width="35" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="5FW-WE-74k"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="User" image="person.circle" catalog="system" id="GDY-0u-DsN"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="englishAverageLabel" destination="ipV-4U-KFu" id="gjh-Xx-D3F"/>
-                        <outlet property="japaneseAverageLabel" destination="YLq-2v-GVX" id="A77-q7-YOF"/>
-                        <outlet property="mathAverageLabel" destination="x0v-rx-iqZ" id="6N7-9Y-AlQ"/>
-                        <outlet property="scienceAverageLabel" destination="tIa-3I-qNv" id="he0-4o-wm5"/>
-                        <outlet property="socialStudyAverageLabel" destination="m6b-Mv-yuL" id="big-NV-csI"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="baz-yO-Q07" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -640,9 +550,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="doc.badge.plus" catalog="system" width="116" height="128"/>
         <image name="house" catalog="system" width="128" height="104"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="person.circle" catalog="system" width="128" height="123"/>
+        <image name="plus.square.dashed" catalog="system" width="128" height="114"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
