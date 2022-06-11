@@ -25,7 +25,9 @@ class DetailViewController: UIViewController {
     @IBOutlet var junniLabel: UILabel!
     @IBOutlet var taitoruLabel: UILabel!
     
-    var plus: Plus?
+    var selectedIndex: IndexPath?
+
+    var realmManager = RealmManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,18 +60,14 @@ class DetailViewController: UIViewController {
         junniLabel.layer.cornerRadius = 16
         junniLabel.layer.masksToBounds = true
         
-        if let plus = plus {
+        if let plus = realmManager.getFilteredRecords(predicate: NSPredicate(format: "id == %@", "\(String(describing: selectedIndex?.row))")).first as? Plus {
             japaneseLabel.text = String(plus.japanese) + "点"
             mathLabel.text = String(plus.math) + "点"
             englishLabel.text = String(plus.english) + "点"
             scienceLabel.text = String(plus.science) + "点"
-            socialStudyLabel.text = String(plus.social_studies) + "点"
+            socialStudyLabel.text = String(plus.socialStudies) + "点"
             rankingLabel.text = String(plus.ranking) + "位"
             titleLabel.text = plus.name
         }
-
-
-        // Do any additional setup after loading the view.
     }
-    
 }

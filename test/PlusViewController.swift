@@ -8,16 +8,7 @@
 import UIKit
 import CoreData
 
-class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate, UITextFieldDelegate {
-    
-    let dataManager = DataManager.shared
-    
-    lazy var fetchedResultsController: NSFetchedResultsController<Plus> = {
-
-        let _controller: NSFetchedResultsController<Plus> = dataManager.getFetchedResultController(with: ["date"])
-        _controller.delegate = self
-        return _controller
-    }()
+class PlusViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var japaneseTextField: UITextField!
@@ -34,6 +25,8 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     @IBOutlet var rikaLabel: UILabel!
     @IBOutlet var shakaiLabel: UILabel!
     @IBOutlet var junniLabel: UILabel!
+
+    let realmManager = RealmManager()
 
     
     // *** let plus: Plus = dataManager.create() ***
@@ -87,14 +80,6 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        do {
-
-            try fetchedResultsController.performFetch()
-        } catch {
-
-            print(error)
-        }
     }
     
     @IBAction func save() {
@@ -104,7 +89,16 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate, 
             alert.addAction(
                 UIAlertAction(title: "保存", style: .default, handler: { [weak self] action in
                     guard let self = self else { return }
-                    self.saveContext()
+                    let plus = Plus()
+                    plus.date = Date()
+                    plus.name = self.nameTextField.text ?? ""
+                    plus.japanese = Int(self.japaneseTextField.text!)!
+                    plus.math = Int(self.mathTextField.text!)!
+                    plus.english = Int(self.englishTextField.text!)!
+                    plus.science = Int(self.scienceTextField.text!)!
+                    plus.socialStudies = Int(self.socialStudiesTextField.text!)!
+                    plus.ranking = Int(self.rankingTextField.text!)!
+                    self.realmManager.createTestRecord(record: plus)
                     }
                 )
             )
@@ -128,26 +122,5 @@ class PlusViewController: UIViewController, NSFetchedResultsControllerDelegate, 
                 )
                 present(textFieldAlert, animated: true, completion: nil)
         }
-    }
-    
-    private func saveContext() {
-        let plus: Plus = dataManager.create()
-        plus.date = Date()
-        plus.japanese = Int64(self.japaneseTextField.text ?? "0")!
-        plus.math = Int64(self.mathTextField.text ?? "0")!
-        plus.english = Int64(self.englishTextField.text ?? "0")!
-        plus.science = Int64(self.scienceTextField.text ?? "0")!
-        plus.social_studies = Int64(self.socialStudiesTextField.text ?? "0")!
-        plus.ranking = Int64(self.rankingTextField.text ?? "0")!
-        plus.name = String(self.nameTextField.text ?? "")
-        print("保存されました。")
-        self.japaneseTextField.text = ""
-        self.mathTextField.text = ""
-        self.englishTextField.text = ""
-        self.scienceTextField.text = ""
-        self.socialStudiesTextField.text = ""
-        self.rankingTextField.text = ""
-        self.nameTextField.text = ""
-        self.dataManager.saveContext()
     }
 }

@@ -5,12 +5,11 @@
 //  Created by Youmi Nagase on 2021/01/06.
 //
 
-import CoreData
 import UIKit
 
-class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate {
+class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
 
-    let dataManager = DataManager.shared
+    let realmManager = RealmManager()
     
     var selectedIndex = IndexPath()
     
@@ -23,13 +22,6 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     }
     
     @IBOutlet var collectionViewFlowLayout: UICollectionViewFlowLayout!
-    
-    lazy var fetchedResultsController: NSFetchedResultsController<Plus> = {
-
-        let _controller: NSFetchedResultsController<Plus> = dataManager.getFetchedResultController(with: ["date"])
-        _controller.delegate = self
-        return _controller
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +47,7 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailSegue" {
             let next = segue.destination as? DetailViewController
-            let plus = fetchedResultsController.object(at: selectedIndex)
-            next?.plus = plus
+            next?.selectedIndex = self.selectedIndex
         }
     }
     //スワイプ時に実行されるメソッド
@@ -70,43 +61,33 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            print(error)
-        }
     }
         
-    }
+}
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let sections = fetchedResultsController.sections else { return 0 }
-
-        let sectionInfo = sections[section]
-        return sectionInfo.numberOfObjects // これ
+        let result = realmManager.getAllRecords(type: Plus())
+        return result.count
     }
 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let plus = fetchedResultsController.object(at: indexPath)
-        print(fetchedResultsController.object(at: indexPath))
+        let result = realmManager.getAllRecords(type: Plus())
+        let plus = result[indexPath.row]
         print(plus.date)
         print(plus.japanese)
         print(plus.math)
         print(plus.english)
         print(plus.science)
-        print(plus.social_studies)
+        print(plus.socialStudies)
         print(plus.ranking)
         print(plus.name)
          
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultCell", for: indexPath) as? ResultCell
-        cell?.dateLabel.text = DateUtils.stringFromDate(date: plus.date!, format: "yyyy/MM/dd")
+        cell?.dateLabel.text = DateUtils.stringFromDate(date: plus.date, format: "yyyy/MM/dd")
         cell?.nameLabel.text = plus.name
-        
-//        DateUtils.stringFromDate(date: plus.date!, format: "yyyy/MM/dd")
         return cell!
     }
     
@@ -114,14 +95,4 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         selectedIndex = indexPath
         performSegue(withIdentifier: "detailSegue", sender: nil)
     }
-    
-    
-class DateUtils {
-    class func stringFromDate(date: Date, format: String) -> String {
-        let formatter: DateFormatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .gregorian)
-        formatter.dateFormat = format
-        return formatter.string(from: date)
-    }
-}
 }
