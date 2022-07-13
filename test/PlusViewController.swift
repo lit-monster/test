@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreData
 import Foundation
 
 class PlusViewController: UIViewController, UITextFieldDelegate {

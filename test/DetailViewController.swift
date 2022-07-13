@@ -17,14 +17,6 @@ class DetailViewController: UIViewController {
     @IBOutlet var rankingLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     
-    @IBOutlet var kokugoLabel: UILabel!
-    @IBOutlet var suugakuLabel: UILabel!
-    @IBOutlet var eigoLabel: UILabel!
-    @IBOutlet var rikaLabel: UILabel!
-    @IBOutlet var shakaiLabel: UILabel!
-    @IBOutlet var junniLabel: UILabel!
-    @IBOutlet var taitoruLabel: UILabel!
-    
     var selectedRecordId: String?
 
     var realmManager = RealmManager()
@@ -33,40 +25,42 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         japaneseLabel.layer.cornerRadius = 16
-        japaneseLabel.layer.masksToBounds = true
         mathLabel.layer.cornerRadius = 16
-        mathLabel.layer.masksToBounds = true
         englishLabel.layer.cornerRadius = 16
-        englishLabel.layer.masksToBounds = true
         scienceLabel.layer.cornerRadius = 16
-        scienceLabel.layer.masksToBounds = true
         socialStudyLabel.layer.cornerRadius = 16
-        socialStudyLabel.layer.masksToBounds = true
         rankingLabel.layer.cornerRadius = 16
-        rankingLabel.layer.masksToBounds = true
         titleLabel.layer.cornerRadius = 16
+        
+        japaneseLabel.layer.masksToBounds = true
+        mathLabel.layer.masksToBounds = true
+        englishLabel.layer.masksToBounds = true
+        scienceLabel.layer.masksToBounds = true
+        socialStudyLabel.layer.masksToBounds = true
+        rankingLabel.layer.masksToBounds = true
         titleLabel.layer.masksToBounds = true
         
-        kokugoLabel.layer.cornerRadius = 16
-        kokugoLabel.layer.masksToBounds = true
-        suugakuLabel.layer.cornerRadius = 16
-        suugakuLabel.layer.masksToBounds = true
-        eigoLabel.layer.cornerRadius = 16
-        eigoLabel.layer.masksToBounds = true
-        rikaLabel.layer.cornerRadius = 16
-        rikaLabel.layer.masksToBounds = true
-        shakaiLabel.layer.cornerRadius = 16
-        shakaiLabel.layer.masksToBounds = true
-        junniLabel.layer.cornerRadius = 16
-        junniLabel.layer.masksToBounds = true
+//        kokugoLabel.layer.cornerRadius = 16
+//        suugakuLabel.layer.cornerRadius = 16
+//        eigoLabel.layer.cornerRadius = 16
+//        rikaLabel.layer.cornerRadius = 16
+//        shakaiLabel.layer.cornerRadius = 16
+//        junniLabel.layer.cornerRadius = 16
+        
+//        kokugoLabel.layer.masksToBounds = true
+//        suugakuLabel.layer.masksToBounds = true
+//        eigoLabel.layer.masksToBounds = true
+//        rikaLabel.layer.masksToBounds = true
+//        shakaiLabel.layer.masksToBounds = true
+//        junniLabel.layer.masksToBounds = true
         
         if let plus = realmManager.getFilteredRecords(predicate: NSPredicate(format: "id == %@", selectedRecordId!), type: Plus()).first as? Plus {
-            japaneseLabel.text = String(plus.japanese) + "点"
-            mathLabel.text = String(plus.math) + "点"
-            englishLabel.text = String(plus.english) + "点"
-            scienceLabel.text = String(plus.science) + "点"
-            socialStudyLabel.text = String(plus.socialStudies) + "点"
-            rankingLabel.text = String(plus.ranking) + "位"
+            japaneseLabel.text = "国語　　" + String(plus.japanese) + "点"
+            mathLabel.text = "数学　　" + String(plus.math) + "点"
+            englishLabel.text = "英語　　" + String(plus.english) + "点"
+            scienceLabel.text = "理科　　" + String(plus.science) + "点"
+            socialStudyLabel.text = "社会　　" + String(plus.socialStudies) + "点"
+            rankingLabel.text = "順位　　" + String(plus.ranking) + "位"
             titleLabel.text = plus.name
         }
     }
@@ -86,5 +80,8 @@ class DetailViewController: UIViewController {
         guard let selectedRecordId = selectedRecordId else { return }
         let updatedRecord = Plus()
         realmManager.updateRecord(id: selectedRecordId, newRecord: updatedRecord)
+    }
+    
+    @IBAction func resultEditbButton() {
     }
 }
