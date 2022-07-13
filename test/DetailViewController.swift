@@ -74,6 +74,12 @@ class DetailViewController: UIViewController {
     @IBAction func deleteButtonPressed() {
         guard let selectedRecordId = selectedRecordId else { return }
         realmManager.deleteRecord(id: selectedRecordId, type: Plus())
+        let alert: UIAlertController = UIAlertController(title: "削除しますか？", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "削除", style: .default, handler: { (action) -> Void in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
+        self.present(alert, animated: true, completion: nil)
     }
 
     @IBAction func updateButtonPressed() {

@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import Foundation
 
 class PlusViewController: UIViewController, UITextFieldDelegate {
 
@@ -87,66 +88,18 @@ class PlusViewController: UIViewController, UITextFieldDelegate {
         socialStudiesTextField.tag = 5
         rankingTextField.tag = 6
         
-        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        toolBar.sizeToFit()
-        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
-        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(commitButtonTapped))
-        toolBar.items = [spacer,commitButton]
-        nameTextField.inputAccessoryView = toolBar
-        japaneseTextField.inputAccessoryView = toolBar
-        mathTextField.inputAccessoryView = toolBar
-        englishTextField.inputAccessoryView = toolBar
-        scienceTextField.inputAccessoryView = toolBar
-        socialStudiesTextField.inputAccessoryView = toolBar
-        rankingTextField.inputAccessoryView = toolBar
+        moveTextField(textFields: [nameTextField, japaneseTextField, mathTextField, englishTextField, scienceTextField, socialStudiesTextField, rankingTextField], previousNextable: true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-//
-//    func textFieldShouldReturn(rankingTextField: UITextField) -> Bool {
-//        rankingTextField.resignFirstResponder()
-//        return true
-//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        let nextTag = textField.tag + 1
-        if let nextTextField = self.view.viewWithTag(nextTag)  {
-            nextTextField.becomeFirstResponder()
-        }
-        return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-    }
-    
-    @objc func commitButtonTapped() {
-//        textField.resignFirstResponder()
-//                if textField == nameTextField {
-//                    japaneseTextField.becomeFirstResponder()
-//                }else if textField == japaneseTextField {
-//                    mathTextField.becomeFirstResponder()
-//                }else if textField == mathTextField {
-//                    englishTextField.becomeFirstResponder()
-//                }else if textField == englishTextField {
-//                    scienceTextField.becomeFirstResponder()
-//                }else if textField == scienceTextField {
-//                    socialStudiesTextField.becomeFirstResponder()
-//                }else if textField == socialStudiesTextField {
-//                    rankingTextField.becomeFirstResponder()
-//                }else {
-//                    return true
-//                }
-//                return true
-    }
-
-    @IBAction func save() {
+        
+        @IBAction func save() {
         if nameTextField.text != "" && japaneseTextField.text != "" && mathTextField.text != "" && englishTextField.text != "" && scienceTextField.text != "" && socialStudiesTextField.text != "" && rankingTextField.text != "" {
             let alert: UIAlertController = UIAlertController(title: "保存しますか？", message: "" , preferredStyle: .alert)
             alert.addAction(
@@ -162,6 +115,13 @@ class PlusViewController: UIViewController, UITextFieldDelegate {
                     plus.socialStudies = Int(self.socialStudiesTextField.text!)!
                     plus.ranking = Int(self.rankingTextField.text!)!
                     self.realmManager.createTestRecord(record: plus)
+                    self.nameTextField.text = ""
+                    self.japaneseTextField.text = ""
+                    self.mathTextField.text = ""
+                    self.englishTextField.text = ""
+                    self.scienceTextField.text = ""
+                    self.socialStudiesTextField.text = ""
+                    self.rankingTextField.text = ""
                     }
                 )
             )
@@ -184,6 +144,47 @@ class PlusViewController: UIViewController, UITextFieldDelegate {
                     )
                 )
                 present(textFieldAlert, animated: true, completion: nil)
+        }
+    }
+}
+
+extension UIViewController {
+
+    @objc func doneButtonTapped() {
+        view.endEditing(true)
+    }
+
+    func moveTextField(textFields: [UITextField], previousNextable: Bool = false) {
+        for (index, textField) in textFields.enumerated() {
+            let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+            toolBar.barStyle = .default
+            var items = [UIBarButtonItem]()
+
+            if previousNextable {
+            let previousButton = UIBarButtonItem(image: UIImage(systemName: "chevron.up"), style: .plain, target: self, action: nil)
+            if textField == textFields.first {
+                previousButton.isEnabled = false
+            }else {
+                previousButton.target = textFields[index - 1]
+                previousButton.action = #selector(UITextField.becomeFirstResponder)
+            }
+            let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: self, action: nil)
+            fixedSpace.width = 8
+            let nextButton = UIBarButtonItem(image: UIImage(systemName: "chevron.down"), style: .plain, target: self, action: nil)
+            if textField == textFields.last {
+                nextButton.isEnabled = false
+            } else {
+                nextButton.target = textFields[index + 1]
+                nextButton.action = #selector(UITextField.becomeFirstResponder)
+            }
+                items.append(contentsOf: [previousButton, nextButton, fixedSpace])
+            }
+            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let doneButton = UIBarButtonItem(title: "完了", style: .done, target: view, action: #selector(UIView.endEditing))
+            items.append(contentsOf: [flexSpace, doneButton])
+            toolBar.setItems(items, animated: false)
+            toolBar.sizeToFit()
+            textField.inputAccessoryView = toolBar
         }
     }
 }

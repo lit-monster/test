@@ -50,6 +50,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
             next?.selectedRecordId = self.selectedRecordID
         }
     }
+    
     //スワイプ時に実行されるメソッド
     @objc func swipe(_ sender: UISwipeGestureRecognizer) {
     }
