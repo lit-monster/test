@@ -40,9 +40,9 @@ class PlusViewController: UIViewController, UITextFieldDelegate {
         nameTextField.layer.borderWidth = 1.0
         japaneseTextField.layer.borderColor = UIColor.systemRed.cgColor
         japaneseTextField.layer.borderWidth = 1.0
-        mathTextField.layer.borderColor = UIColor.systemTeal.cgColor
+        mathTextField.layer.borderColor = UIColor.systemBlue.cgColor
         mathTextField.layer.borderWidth = 1.0
-        englishTextField.layer.borderColor = UIColor.systemPink.cgColor
+        englishTextField.layer.borderColor = UIColor.systemYellow.cgColor
         englishTextField.layer.borderWidth = 1.0
         scienceTextField.layer.borderColor = UIColor.systemGreen.cgColor
         scienceTextField.layer.borderWidth = 1.0
@@ -67,9 +67,8 @@ class PlusViewController: UIViewController, UITextFieldDelegate {
         junniLabel.layer.masksToBounds = true
         
         saveButton.layer.cornerRadius = 10
-        saveButton.layer.borderColor = UIColor.systemYellow.cgColor
+        saveButton.layer.borderColor = UIColor.systemPink.cgColor
         saveButton.layer.borderWidth = 2.0
-        saveButton.layer.shadowColor = UIColor.systemYellow.cgColor
         
         nameTextField.delegate = self
         japaneseTextField.delegate = self

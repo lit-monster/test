@@ -40,20 +40,6 @@ class DetailViewController: UIViewController {
         rankingLabel.layer.masksToBounds = true
         titleLabel.layer.masksToBounds = true
         
-//        kokugoLabel.layer.cornerRadius = 16
-//        suugakuLabel.layer.cornerRadius = 16
-//        eigoLabel.layer.cornerRadius = 16
-//        rikaLabel.layer.cornerRadius = 16
-//        shakaiLabel.layer.cornerRadius = 16
-//        junniLabel.layer.cornerRadius = 16
-        
-//        kokugoLabel.layer.masksToBounds = true
-//        suugakuLabel.layer.masksToBounds = true
-//        eigoLabel.layer.masksToBounds = true
-//        rikaLabel.layer.masksToBounds = true
-//        shakaiLabel.layer.masksToBounds = true
-//        junniLabel.layer.masksToBounds = true
-        
         if let plus = realmManager.getFilteredRecords(predicate: NSPredicate(format: "id == %@", selectedRecordId!), type: Plus()).first as? Plus {
             japaneseLabel.text = "国語　　" + String(plus.japanese) + "点"
             mathLabel.text = "数学　　" + String(plus.math) + "点"

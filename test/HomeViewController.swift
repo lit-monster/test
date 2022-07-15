@@ -29,19 +29,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         collectionViewFlowLayout.estimatedItemSize = CGSize(width: self.view.frame.width, height: 64)
         
         // Do any additional setup after loading the view.
-        
-        //スワイプ用のインスタンスを生成する
-        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(HomeViewController.swipe(_:))
-        )
-        //デリゲートをセット
-        swipeGesture.delegate = self
-        //viewにスワイプジェスチャーを追加
-        self.view.addGestureRecognizer(swipeGesture)
-        
-        let leftSwipe = UISwipeGestureRecognizer(
-            target: self, action: #selector(HomeViewController.swipe(_:)))
-        leftSwipe.direction = .left
-        self.view.addGestureRecognizer(leftSwipe)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
