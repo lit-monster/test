@@ -20,13 +20,13 @@ class PlusViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var saveButton: UIButton!
     
-    @IBOutlet var taitoruLabel: UILabel!
-    @IBOutlet var kokugoLabel: UILabel!
-    @IBOutlet var suugakuLabel: UILabel!
-    @IBOutlet var eigoLabel: UILabel!
-    @IBOutlet var rikaLabel: UILabel!
-    @IBOutlet var shakaiLabel: UILabel!
-    @IBOutlet var junniLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var japaneseLabel: UILabel!
+    @IBOutlet var mathLabel: UILabel!
+    @IBOutlet var englishLabel: UILabel!
+    @IBOutlet var scienceLabel: UILabel!
+    @IBOutlet var socialStudiesLabel: UILabel!
+    @IBOutlet var rankingLabel: UILabel!
   
     let realmManager = RealmManager()
     
@@ -51,20 +51,20 @@ class PlusViewController: UIViewController, UITextFieldDelegate {
         rankingTextField.layer.borderColor = UIColor.systemPurple.cgColor
         rankingTextField.layer.borderWidth = 1.0
         
-        taitoruLabel.layer.cornerRadius = 16
-        kokugoLabel.layer.cornerRadius = 16
-        suugakuLabel.layer.cornerRadius = 16
-        eigoLabel.layer.cornerRadius = 16
-        rikaLabel.layer.cornerRadius = 16
-        shakaiLabel.layer.cornerRadius = 16
-        junniLabel.layer.cornerRadius = 16
-        taitoruLabel.layer.masksToBounds = true
-        kokugoLabel.layer.masksToBounds = true
-        suugakuLabel.layer.masksToBounds = true
-        eigoLabel.layer.masksToBounds = true
-        rikaLabel.layer.masksToBounds = true
-        shakaiLabel.layer.masksToBounds = true
-        junniLabel.layer.masksToBounds = true
+        titleLabel.layer.cornerRadius = 5
+        japaneseLabel.layer.cornerRadius = 5
+        mathLabel.layer.cornerRadius = 5
+        englishLabel.layer.cornerRadius = 5
+        scienceLabel.layer.cornerRadius = 5
+        socialStudiesLabel.layer.cornerRadius = 5
+        rankingLabel.layer.cornerRadius = 5
+        titleLabel.layer.masksToBounds = true
+        japaneseLabel.layer.masksToBounds = true
+        mathLabel.layer.masksToBounds = true
+        englishLabel.layer.masksToBounds = true
+        scienceLabel.layer.masksToBounds = true
+        socialStudiesLabel.layer.masksToBounds = true
+        rankingLabel.layer.masksToBounds = true
         
         saveButton.layer.cornerRadius = 10
         saveButton.layer.borderColor = UIColor.systemPink.cgColor
@@ -87,6 +87,7 @@ class PlusViewController: UIViewController, UITextFieldDelegate {
         rankingTextField.tag = 6
         
         moveTextField(textFields: [nameTextField, japaneseTextField, mathTextField, englishTextField, scienceTextField, socialStudiesTextField, rankingTextField], previousNextable: true)
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -95,6 +96,32 @@ class PlusViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    func countTextField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var maxLength: Int = 0
+        
+        switch (textField.tag) {
+        case 0: //title
+            maxLength = 15
+        case 1: //japanese
+            maxLength = 10
+        case 2: //math
+            maxLength = 10
+        case 3: //english
+            maxLength = 10
+        case 4: //science
+            maxLength = 10
+        case 5: //socialStudies
+            maxLength = 10
+        case 6: //rankig
+            maxLength = 10
+        default:
+            break
+        }
+        let textFieldNumber = textField.text?.count ?? 0
+        let stringNumber = string.count
+        return textFieldNumber + stringNumber <= maxLength
     }
         
         @IBAction func save() {
@@ -131,6 +158,7 @@ class PlusViewController: UIViewController, UITextFieldDelegate {
                 )
             )
             present(alert, animated: true, completion: nil)
+            
         }else {
             let textFieldAlert: UIAlertController = UIAlertController(title: "保存できません。", message: "未入力の項目があります。", preferredStyle: .alert)
 

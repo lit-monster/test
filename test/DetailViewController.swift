@@ -24,13 +24,13 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        japaneseLabel.layer.cornerRadius = 16
-        mathLabel.layer.cornerRadius = 16
-        englishLabel.layer.cornerRadius = 16
-        scienceLabel.layer.cornerRadius = 16
-        socialStudyLabel.layer.cornerRadius = 16
-        rankingLabel.layer.cornerRadius = 16
-        titleLabel.layer.cornerRadius = 16
+        japaneseLabel.layer.cornerRadius = 5
+        mathLabel.layer.cornerRadius = 5
+        englishLabel.layer.cornerRadius = 5
+        scienceLabel.layer.cornerRadius = 5
+        socialStudyLabel.layer.cornerRadius = 5
+        rankingLabel.layer.cornerRadius = 5
+        titleLabel.layer.cornerRadius = 5
         
         japaneseLabel.layer.masksToBounds = true
         mathLabel.layer.masksToBounds = true
